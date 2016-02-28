@@ -1,0 +1,25 @@
+# Maintainer: lockedshadow (locked.shadow [at] openmailbox.org)
+_pkgname=cirnosay
+pkgname=${_pkgname}-git
+pkgver=20130725
+pkgrel=1
+pkgdesc="Baka for terminal"
+arch=('i686' 'x86_64')
+url="https://github.com/yuzurufag/cirnosay"
+license=('unknown')
+depends=('imlib2')
+makedepends=('git' 'cmake' 'imagemagick')
+source=("git+${url}.git")
+md5sums=('SKIP')
+
+build() {
+	cd "$_pkgname"
+	./download_pictures.sh
+	cmake -DCMAKE_INSTALL_PREFIX=/usr .
+	make
+}
+
+package() {
+	cd "$_pkgname"
+	make DESTDIR="$pkgdir/" install
+}

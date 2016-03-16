@@ -1,0 +1,41 @@
+# Maintainer: lockedshadow <locked.shadow [at] openmailbox.org>
+pkgname=prismriver
+pkgver=0.3.0
+pkgrel=1
+pkgdesc="Search engine for song lyrics"
+arch=('any')
+url="https://github.com/anlar/${pkgname}"
+license=('MIT')
+depends=('python'
+		 'python-beautifulsoup4'
+		 'python-lxml'
+		 )
+optdepends=('python-pyqt5: for Lunasa Prismriver Qt5-based graphical interface'
+            'python-dbus: for Lunasa Prismriver Qt5-based graphical interface'
+            )
+source=("${url}/archive/v$pkgver.tar.gz")
+md5sums=('8c05b264db4ca21499badef01df3ce81')
+
+package() {
+	cd "$pkgname-$pkgver"
+	
+	install -d "$pkgdir"/usr/bin	
+	install -vm755 ${pkgname}-{lunasa,lyrica}.py "${pkgdir}"/usr/bin/
+	install -vm755 bin/deadbeef-infobar.sh "${pkgdir}"/usr/bin/deadbeef-infobar.sh
+	
+	install -d "$pkgdir"/usr/lib/python3.5/site-packages/${pkgname}/{plugin,qt}
+	install -vm644 "${pkgname}"/*.py "${pkgdir}"/usr/lib/python3.5/site-packages/${pkgname}/
+	install -vm644 "${pkgname}"/plugin/*.py "${pkgdir}"/usr/lib/python3.5/site-packages/${pkgname}/plugin/
+	install -vm644 "${pkgname}"/qt/* "${pkgdir}"/usr/lib/python3.5/site-packages/${pkgname}/qt/
+	
+	install -d "$pkgdir"/usr/share/pixmaps/player
+	install -vm644 "${pkgname}"/pixmaps/${pkgname}-lunasa.png "${pkgdir}"/usr/share/pixmaps/${pkgname}-lunasa.png
+	install -vm644 "${pkgname}"/pixmaps/player/*.png "${pkgdir}"/usr/share/pixmaps/player/
+	
+	install -Dvm644 ${pkgname}-lunasa.desktop "${pkgdir}"/usr/share/applications/${pkgname}-lunasa.desktop
+	
+	install -d "$pkgdir"/usr/share/doc/${pkgname}
+	install -vm644 docs/*.md  "$pkgdir"/usr/share/doc/${pkgname}/
+	
+	install -Dvm644 LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
+}

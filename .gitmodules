@@ -1,0 +1,3 @@
+[submodule "cirnosay"]
+	path = cirnosay
+	url = https://aur.archlinux.org/cirnosay-git.git

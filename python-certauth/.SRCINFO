@@ -1,0 +1,15 @@
+pkgbase = python-certauth
+	pkgdesc = Certificate Authority Certificate Maker Tools
+	pkgver = 1.1.6
+	pkgrel = 1
+	url = https://github.com/ikreymer/certauth
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-pyopenssl
+	source = https://files.pythonhosted.org/packages/source/c/certauth/certauth-1.1.6.tar.gz
+	sha256sums = ea26e66c2e1286a5089d6b619fcfa4155427928d24b5f8f648b84436b8a06c4b
+
+pkgname = python-certauth
+

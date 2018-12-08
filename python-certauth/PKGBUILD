@@ -1,0 +1,24 @@
+# Maintainer: locked_sh <locked.sh at disroot.org> 
+
+pkgname=python-certauth
+_name=${pkgname#python-}
+pkgver=1.1.6
+pkgrel=1
+pkgdesc="Certificate Authority Certificate Maker Tools"
+url="https://github.com/ikreymer/${_name}"
+depends=('python' 'python-pyopenssl')
+makedepends=('python-setuptools')
+license=('MIT')
+arch=('any')
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
+sha256sums=('ea26e66c2e1286a5089d6b619fcfa4155427928d24b5f8f648b84436b8a06c4b')
+
+build() {
+    cd $srcdir/${_name}-${pkgver}
+    python setup.py build
+}
+
+package() {
+    cd $srcdir/${_name}-${pkgver}
+    python setup.py install --root="$pkgdir" --skip-build --optimize=1 
+}

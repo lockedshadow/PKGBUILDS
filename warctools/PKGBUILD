@@ -1,0 +1,23 @@
+# Maintainer: locked_sh <locked.sh at disroot.org> 
+
+pkgname=warctools
+pkgver=4.10.0
+pkgrel=1
+pkgdesc="Command line tools and libraries for handling and manipulating WARC files (and HTTP contents)"
+url="https://github.com/internetarchive/warctools"
+depends=('python')
+makedepends=('python-setuptools')
+license=('MIT')
+arch=('any')
+source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
+sha256sums=('ce0c6e274db8ac8810f7c97b3943e8e8deadbc3f5c982db77cddaae2d2ae6170')
+
+build() {
+    cd $srcdir/${pkgname}-${pkgver}
+    python setup.py build
+}
+
+package() {
+    cd $srcdir/${pkgname}-${pkgver}
+    python setup.py install --root="$pkgdir" --skip-build --optimize=1 
+}

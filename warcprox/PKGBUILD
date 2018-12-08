@@ -1,0 +1,23 @@
+# Maintainer: locked_sh <locked.sh at disroot.org> 
+
+pkgname=warcprox
+pkgver=2.3
+pkgrel=1
+pkgdesc="WARC writing MITM HTTP/S proxy"
+url="https://github.com/internetarchive/${pkgname}"
+depends=('python' 'python-cryptography' 'python-pysocks' 'python-requests>=2.0.1' 'python-urllib3' 'python-doublethink>=0.2.0.dev87' 'python-urlcanon>=0.1.dev16' 'warctools' 'python-certauth=1.1.6')
+makedepends=('python-setuptools')
+license=('GPL')
+arch=('any')
+source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
+sha256sums=('d4faa76b82d0d6896129a02f9aedc12b806c53a0cdfe518dfc11cf8e2d2b1b22')
+
+build() {
+    cd $srcdir/${pkgname}-${pkgver}
+    python setup.py build
+}
+
+package() {
+    cd $srcdir/${pkgname}-${pkgver}
+    python setup.py install --skip-build --root="$pkgdir" --optimize=1 
+}

@@ -1,0 +1,22 @@
+pkgbase = warcprox
+	pkgdesc = WARC writing MITM HTTP/S proxy
+	pkgver = 2.3
+	pkgrel = 1
+	url = https://github.com/internetarchive/warcprox
+	arch = any
+	license = GPL
+	makedepends = python-setuptools
+	depends = python
+	depends = python-cryptography
+	depends = python-pysocks
+	depends = python-requests>=2.0.1
+	depends = python-urllib3
+	depends = python-doublethink>=0.2.0.dev87
+	depends = python-urlcanon>=0.1.dev16
+	depends = warctools
+	depends = python-certauth=1.1.6
+	source = https://files.pythonhosted.org/packages/source/w/warcprox/warcprox-2.3.tar.gz
+	sha256sums = d4faa76b82d0d6896129a02f9aedc12b806c53a0cdfe518dfc11cf8e2d2b1b22
+
+pkgname = warcprox
+

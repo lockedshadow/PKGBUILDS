@@ -1,0 +1,24 @@
+# Maintainer: locked_sh <locked.sh at disroot.org>
+
+pkgname=python-doublethink
+_name=${pkgname#python-}
+pkgver=0.2.0.dev94
+pkgrel=1
+pkgdesc="RethinkDB Python library"
+url="https://github.com/internetarchive/doublethink"
+depends=('python' 'python-rethinkdb')
+makedepends=('python-setuptools')
+license=('Apache')
+arch=('any')
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
+sha256sums=('58974211a665f2d904eda742dd44aa087d45273ee42f3bc18315a5441f418e17')
+
+build() {
+    cd ${srcdir}/${_name}-${pkgver}
+    python setup.py build
+}
+
+package() {
+    cd ${srcdir}/${_name}-${pkgver}
+    python setup.py install --root="$pkgdir" --optimize=1 
+}

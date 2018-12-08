@@ -1,0 +1,15 @@
+pkgbase = python-doublethink
+	pkgdesc = RethinkDB Python library
+	pkgver = 0.2.0.dev94
+	pkgrel = 1
+	url = https://github.com/internetarchive/doublethink
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	depends = python
+	depends = python-rethinkdb
+	source = https://files.pythonhosted.org/packages/source/d/doublethink/doublethink-0.2.0.dev94.tar.gz
+	sha256sums = 58974211a665f2d904eda742dd44aa087d45273ee42f3bc18315a5441f418e17
+
+pkgname = python-doublethink
+

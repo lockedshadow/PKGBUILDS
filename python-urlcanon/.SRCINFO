@@ -1,0 +1,15 @@
+pkgbase = python-urlcanon
+	pkgdesc = A URL canonicalization (normalization) library for Python and Java.
+	pkgver = 0.2
+	pkgrel = 1
+	url = https://github.com/iipc/urlcanon
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	depends = python
+	depends = python-idna>=2.5
+	source = https://files.pythonhosted.org/packages/source/u/urlcanon/urlcanon-0.2.tar.gz
+	sha256sums = c693e376ded540219b920805f6689db0372839b0140751024ef67da43f82af23
+
+pkgname = python-urlcanon
+

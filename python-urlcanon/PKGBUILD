@@ -1,0 +1,24 @@
+# Maintainer: locked_sh <locked.sh at disroot.org> 
+
+pkgname=python-urlcanon
+_name=${pkgname#python-}
+pkgver=0.2
+pkgrel=1
+pkgdesc="A URL canonicalization (normalization) library"
+url="https://github.com/iipc/urlcanon"
+depends=('python' 'python-idna>=2.5')
+makedepends=('python-setuptools')
+license=('Apache')
+arch=('any')
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
+sha256sums=('c693e376ded540219b920805f6689db0372839b0140751024ef67da43f82af23')
+
+build() {
+    cd ${srcdir}/${_name}-${pkgver}
+    python setup.py build
+}
+
+package() {
+    cd ${srcdir}/${_name}-${pkgver}
+    python setup.py install --root="$pkgdir" --optimize=1 
+}

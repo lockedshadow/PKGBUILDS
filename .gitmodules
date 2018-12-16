@@ -1,3 +1,6 @@
 [submodule "cirnosay"]
 	path = cirnosay
 	url = https://aur.archlinux.org/cirnosay-git.git
+[submodule "emercoin"]
+	path = emercoin
+	url = https://aur.archlinux.org/emercoin.git
